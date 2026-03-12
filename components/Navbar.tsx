@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
@@ -32,8 +32,8 @@ export function Navbar() {
       
       <div className="hidden md:flex flex-[2] items-center justify-center">
         {/* Zig-Zag Portfolio Links */}
-        <div className="flex items-center space-x-24 text-base md:text-lg italic font-serif font-bold tracking-[0.2em] text-white">
-          <Link href="/nayan" className="hover:opacity-60 transition-opacity transform -translate-y-3 relative h-8 w-24 text-center">
+        <div className="flex items-center space-x-24 text-base md:text-lg italic font-serif font-bold tracking-[0.2em] text-[#C4A586]">
+          <Link href="/nayan" className="hover:text-white transition-colors transform -translate-y-3 relative h-8 w-24 text-center">
             <AnimatePresence mode="wait">
               <motion.span
                 key={showHindi ? "hi" : "en"}
@@ -48,7 +48,7 @@ export function Navbar() {
             </AnimatePresence>
           </Link>
           
-          <Link href="/janani" className="hover:opacity-60 transition-opacity transform translate-y-5 relative h-8 w-24 text-center">
+          <Link href="/janani" className="hover:text-white transition-colors transform translate-y-5 relative h-8 w-24 text-center">
             <AnimatePresence mode="wait">
               <motion.span
                 key={showHindi ? "hi" : "en"}
@@ -63,7 +63,7 @@ export function Navbar() {
             </AnimatePresence>
           </Link>
           
-          <Link href="/darpan" className="hover:opacity-60 transition-opacity transform -translate-y-2 relative h-8 w-24 text-center">
+          <Link href="/darpan" className="hover:text-white transition-colors transform -translate-y-2 relative h-8 w-24 text-center">
             <AnimatePresence mode="wait">
               <motion.span
                 key={showHindi ? "hi" : "en"}
@@ -81,7 +81,7 @@ export function Navbar() {
       </div>
 
       <div className="flex-1 flex justify-end items-center">
-        <span className="hidden md:block uppercase text-sm tracking-[0.4em] font-bold text-white cursor-default select-none mr-4">
+        <span className="hidden md:block uppercase text-sm tracking-[0.4em] font-bold text-white/60 cursor-default select-none mr-4">
           About Me
         </span>
         <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>

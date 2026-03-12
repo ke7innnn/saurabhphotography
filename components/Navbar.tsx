@@ -30,10 +30,10 @@ export function Navbar() {
         </Link>
       </div>
       
-      <div className="hidden md:flex flex-[2] items-center justify-center space-x-12">
+      <div className="hidden md:flex flex-[2] items-center justify-center">
         {/* Zig-Zag Portfolio Links */}
-        <div className="flex items-center space-x-8 text-sm italic font-serif tracking-widest text-[#C4A586]">
-          <Link href="/nayan" className="hover:text-white transition-colors transform -translate-y-2 relative h-6 w-16 text-center">
+        <div className="flex items-center space-x-16 text-sm italic font-serif tracking-widest text-[#C4A586]">
+          <Link href="/nayan" className="hover:text-white transition-colors transform -translate-y-2 relative h-6 w-20 text-center">
             <AnimatePresence mode="wait">
               <motion.span
                 key={showHindi ? "hi" : "en"}
@@ -41,14 +41,14 @@ export function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -5 }}
                 transition={{ duration: 0.5 }}
-                className="absolute inset-0 flex items-center justify-center"
+                className="absolute inset-0 flex items-center justify-center whitespace-nowrap"
               >
                 {showHindi ? 'नयन' : 'nayan'}
               </motion.span>
             </AnimatePresence>
           </Link>
           
-          <Link href="/janani" className="hover:text-white transition-colors transform translate-y-3 relative h-6 w-16 text-center">
+          <Link href="/janani" className="hover:text-white transition-colors transform translate-y-3 relative h-6 w-20 text-center">
             <AnimatePresence mode="wait">
               <motion.span
                 key={showHindi ? "hi" : "en"}
@@ -56,14 +56,14 @@ export function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -5 }}
                 transition={{ duration: 0.5 }}
-                className="absolute inset-0 flex items-center justify-center"
+                className="absolute inset-0 flex items-center justify-center whitespace-nowrap"
               >
                 {showHindi ? 'जननी' : 'janani'}
               </motion.span>
             </AnimatePresence>
           </Link>
           
-          <Link href="/darpan" className="hover:text-white transition-colors transform -translate-y-1 relative h-6 w-16 text-center">
+          <Link href="/darpan" className="hover:text-white transition-colors transform -translate-y-1 relative h-6 w-20 text-center">
             <AnimatePresence mode="wait">
               <motion.span
                 key={showHindi ? "hi" : "en"}
@@ -71,20 +71,19 @@ export function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -5 }}
                 transition={{ duration: 0.5 }}
-                className="absolute inset-0 flex items-center justify-center"
+                className="absolute inset-0 flex items-center justify-center whitespace-nowrap"
               >
                 {showHindi ? 'दर्पण' : 'darpan'}
               </motion.span>
             </AnimatePresence>
           </Link>
         </div>
-        
-        <div className="h-4 w-[1px] bg-white/30" /> {/* Divider */}
-
-        <Link href="/about" className="uppercase text-sm tracking-widest hover:opacity-70 transition-opacity whitespace-nowrap">About Me</Link>
       </div>
 
-      <div className="flex-1 flex justify-end">
+      <div className="flex-1 flex justify-end items-center">
+        <span className="hidden md:block uppercase text-xs tracking-[0.3em] font-medium text-white/50 cursor-default select-none mr-4">
+          About Me
+        </span>
         <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X /> : <Menu />}
         </button>

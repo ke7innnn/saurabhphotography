@@ -9,29 +9,12 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [showHindi, setShowHindi] = useState(false);
   
-  const { scrollY } = useScroll();
-  // Transform from 0 (original position) to a negative X value that centers it
-  // This depends on the container width, but we can use a percentage or a fixed offset
-  // A cleaner way is to toggle a class or state, but transform gives a smoother middle-transition
-  const navX = useTransform(scrollY, [0, 600], ["0%", "-33%"]);
-  // Alternative: Just animate the justify-content or margin if possible, 
-  // but let's use a cleaner approach with a layout transition or a simple state-based class.
-  const [isScrolled, setIsScrolled] = useState(false);
-
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 400);
-    };
-    window.addEventListener('scroll', handleScroll);
-    
     const interval = setInterval(() => {
       setShowHindi((prev) => !prev);
     }, 1500);
     
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      clearInterval(interval);
-    };
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -41,17 +24,13 @@ export function Navbar() {
       transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-6 mix-blend-difference text-white md:px-12"
     >
-      <Link href="/" className="text-xl md:text-2xl font-serif tracking-tight uppercase z-10">
-        SAURABH THAKKAR
-      </Link>
+      <div className="flex-1">
+        <Link href="/" className="text-xl md:text-2xl font-serif tracking-tight uppercase">
+          SAURABH THAKKAR
+        </Link>
+      </div>
       
-      <motion.div 
-        animate={{ 
-          x: isScrolled ? "-40vw" : "0vw",
-          left: isScrolled ? "50%" : "auto"
-        }}
-        className={`hidden md:flex items-center space-x-12 transition-all duration-1000 ease-[0.76,0,0.24,1] ${isScrolled ? 'fixed left-1/2 -translate-x-1/2' : ''}`}
-      >
+      <div className="hidden md:flex flex-[2] items-center justify-center space-x-12">
         {/* Zig-Zag Portfolio Links */}
         <div className="flex items-center space-x-8 text-sm italic font-serif tracking-widest text-[#C4A586]">
           <Link href="/nayan" className="hover:text-white transition-colors transform -translate-y-2 relative h-6 w-16 text-center">
@@ -103,9 +82,9 @@ export function Navbar() {
         <div className="h-4 w-[1px] bg-white/30" /> {/* Divider */}
 
         <Link href="/about" className="uppercase text-sm tracking-widest hover:opacity-70 transition-opacity whitespace-nowrap">About Me</Link>
-      </motion.div>
+      </div>
 
-      <div className="md:invisible"> {/* Invisible spacer to keep logo left */}
+      <div className="flex-1 flex justify-end">
         <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X /> : <Menu />}
         </button>

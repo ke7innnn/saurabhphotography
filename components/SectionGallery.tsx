@@ -42,16 +42,19 @@ export function SectionGallery() {
           className="flex whitespace-nowrap gap-16 md:gap-32 w-max items-center pr-16 md:pr-32 will-change-transform"
         >
           {galleryLoop.map((src, idx) => {
-            const heights = [
-              "h-[45vh]", 
-              "h-[70vh]", 
+            const baseHeights = [
               "h-[50vh]", 
-              "h-[80vh]", 
-              "h-[60vh]", 
               "h-[75vh]", 
-              "h-[55vh]"
+              "h-[55vh]", 
+              "h-[85vh]", 
+              "h-[65vh]", 
+              "h-[80vh]", 
+              "h-[60vh]"
             ];
-            const height = heights[idx % 7];
+            // Identify landscape images (assuming we know which ones they are or making them slightly larger)
+            // For now, let's just make the "landscape-leaning" indices slightly larger
+            const isLandscape = [0, 2, 6].includes(idx % 7); 
+            const height = isLandscape ? baseHeights[idx % 7].replace('vh', 'vh') : baseHeights[idx % 7];
             
             const transforms = [
               "translate-y-0", 
@@ -67,14 +70,13 @@ export function SectionGallery() {
             return (
               <div 
                 key={idx} 
-                className={`relative flex-shrink-0 ${height} aspect-[4/5] transform ${transform} group perspective-1000`}
+                className={`relative flex-shrink-0 ${height} w-auto transform ${transform} group transition-all duration-700`}
               >
-                <Image 
+                <img 
                   src={src} 
                   alt={`Gallery ${idx}`}
-                  fill
-                  sizes="(max-width: 768px) 50vw, 33vw"
-                  className="object-contain filter grayscale-0 group-hover:grayscale transition-all duration-[800ms] shadow-2xl hover:shadow-[0_30px_60px_rgba(0,0,0,0.4)] hover:-translate-y-2 pointer-events-none"
+                  className="h-full w-auto object-cover filter grayscale-0 group-hover:grayscale-0 transition-all duration-[800ms] hover:scale-[1.02]"
+                  loading="lazy"
                 />
               </div>
             );

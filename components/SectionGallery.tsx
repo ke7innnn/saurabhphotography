@@ -51,10 +51,8 @@ export function SectionGallery() {
               "h-[80vh]", 
               "h-[60vh]"
             ];
-            // Identify landscape images (assuming we know which ones they are or making them slightly larger)
-            // For now, let's just make the "landscape-leaning" indices slightly larger
             const isLandscape = [0, 2, 6].includes(idx % 7); 
-            const height = isLandscape ? baseHeights[idx % 7].replace('vh', 'vh') : baseHeights[idx % 7];
+            const height = isLandscape ? baseHeights[idx % 7] : baseHeights[idx % 7];
             
             const transforms = [
               "translate-y-0", 
@@ -72,11 +70,12 @@ export function SectionGallery() {
                 key={idx} 
                 className={`relative flex-shrink-0 ${height} w-auto transform ${transform} group transition-all duration-700`}
               >
-                <img 
+                <Image 
                   src={src} 
                   alt={`Gallery ${idx}`}
+                  width={800} // Provide a baseline width
+                  height={1200} // Provide a baseline height
                   className="h-full w-auto object-cover filter grayscale-0 group-hover:grayscale-0 transition-all duration-[800ms] hover:scale-[1.02]"
-                  loading="lazy"
                 />
               </div>
             );

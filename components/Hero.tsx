@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export function Hero() {
   return (
@@ -12,9 +13,11 @@ export function Hero() {
         animate={{ scale: 1 }}
         transition={{ duration: 2, ease: "easeOut" }}
       >
-        <img 
+        <Image 
           src="/hero/Sau.JPG.jpeg" 
-          alt="Kasia Siwosz Hero"
+          alt="Saurabh Thakkar Hero"
+          fill
+          priority
           className="w-full h-full object-cover object-bottom opacity-90"
         />
       </motion.div>

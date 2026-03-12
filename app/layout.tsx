@@ -15,8 +15,8 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: 'Life Coach London Central London 1:1 | Kasia Siwosz',
-  description: 'Life coach london for ambitious professionals in Central London with measurable results and clear momentum | Kasia Siwosz',
+  title: 'Saurabh Photography | Professional Portrait & Editorial Photographer',
+  description: 'Saurabh Thakkar - Professional photographer specializing in portraits, maternity, and editorial photography. Capturing authentic human emotions and stories through a cinematic lens.',
 };
 
 export default function RootLayout({
